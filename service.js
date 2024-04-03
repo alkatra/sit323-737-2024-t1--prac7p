@@ -14,7 +14,7 @@ app.get("/", function (req, res) {
 
 function inputValidator(req) {
   // Check if request contains two numbers as num1 and num2
-  if (!req.body.num1 || !req.body.num2) {
+  if (req.body.num1 === undefined || req.body.num2 === undefined) {
     return {
       check: false,
       message: "Please input two numbers in the request body as num1 and num2",
