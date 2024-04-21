@@ -1,0 +1,19 @@
+# Docker Compose file
+# Version of Docker Compose file format
+version: "3.8"
+
+# Define the services that should be created
+services:
+  # The first service is "web"
+  web:
+    # Build the Docker image from the Dockerfile in the current directory
+    build: .
+    # Map port 3000 of the service to port 3000 on the host
+    ports:
+      - "3000:3000"
+    # Mount the current directory on the host to /app in the container,
+    # making the code available to the container
+    # The /app/node_modules volume is defined to cache the node modules in a separate Docker layer
+    volumes:
+      - .:/app
+      - /app/node_modules
